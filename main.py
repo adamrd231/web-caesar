@@ -24,7 +24,7 @@ form = """
                 width: 540px;
                 height: 120px;
             }}
-            
+
         </style>
     </head>
     <body>
@@ -51,6 +51,10 @@ def encrypt():
     rot = int(request.form[('rot')])
     text = request.form[('text')]
     answer = rotate_string(text, rot)
-    return form.format(answer)
+
+    if text == "":
+        return form.format("")
+    else:
+        return form.format(answer)
 
 app.run()
